@@ -1,0 +1,1148 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>CA Osasuna · Fuerza Rojilla</title>
+    <style>
+        /* ===== RESET & BASE ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        html, body, main, header, section, footer {
+            width: 100%;
+            max-width: 100%;
+        }
+        body {
+            background: #f5f3ef;
+            font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            color: #0b0b0b;
+            line-height: 1.4;
+            -webkit-font-smoothing: antialiased;
+        }
+        /* ===== VARIABLES ===== */
+        :root {
+            --black: #0b0b0b;
+            --white: #f5f3ef;
+            --electric-blue: #0038ff;
+            --cyan: #00e5ff;
+            --lime: #b3ff00;
+            --rojillo: #d4002a;      /* brief-specific accent: rojillo Osasuna */
+            --rojillo-dark: #a00020;
+            --gray-hard: #c8c5bc;
+            --border-thick: 6px;
+            --shadow-hard: 12px 12px 0 rgba(0,0,0,0.9);
+            --shadow-soft: 8px 8px 0 rgba(0,0,0,0.4);
+            --font-display: 'Inter', sans-serif;
+            --section-pad: 4.5rem 1.5rem;
+        }
+        /* ===== TYPOGRAPHY ===== */
+        h1, h2, h3, h4 {
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            line-height: 1;
+            text-transform: uppercase;
+        }
+        h1 {
+            font-size: clamp(3.6rem, 18vw, 8rem);
+            line-height: 0.9;
+            color: var(--black);
+        }
+        h2 {
+            font-size: clamp(2.4rem, 8vw, 5rem);
+            margin-bottom: 1.5rem;
+            border-left: var(--border-thick) solid var(--rojillo);
+            padding-left: 1.2rem;
+        }
+        h3 {
+            font-size: clamp(1.8rem, 5vw, 2.8rem);
+        }
+        p {
+            font-size: 1.125rem;
+            max-width: 60ch;
+            margin-bottom: 1.2rem;
+            font-weight: 400;
+        }
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+        /* ===== CONTAINER ===== */
+        .container {
+            max-width: 1360px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+        /* ===== NAVBAR ===== */
+        header {
+            background: var(--black);
+            color: var(--white);
+            padding: 0.8rem 1.5rem;
+            border-bottom: var(--border-thick) solid var(--rojillo);
+            position: sticky;
+            top: 0;
+            z-index: 99;
+        }
+        .nav-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 0.5rem 1.2rem;
+        }
+        .nav-logo {
+            font-size: 1.8rem;
+            font-weight: 800;
+            letter-spacing: -0.04em;
+            display: flex;
+            align-items: center;
+            gap: 0.2rem;
+        }
+        .nav-logo span {
+            background: var(--rojillo);
+            color: var(--white);
+            padding: 0.1rem 0.6rem;
+            border: 3px solid var(--white);
+            margin-right: 0.3rem;
+        }
+        .nav-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem 1.6rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 0.02em;
+        }
+        .nav-links a {
+            padding: 0.2rem 0;
+            border-bottom: 3px solid transparent;
+            transition: 0.15s ease;
+        }
+        .nav-links a:hover {
+            border-bottom-color: var(--cyan);
+            color: var(--cyan);
+        }
+        /* ===== HERO (poster-like) ===== */
+        #hero {
+            background: var(--white);
+            padding: var(--section-pad);
+            position: relative;
+            overflow: hidden;
+            border-bottom: var(--border-thick) solid var(--black);
+        }
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2.5rem 3rem;
+            align-items: start;
+        }
+        .hero-left h1 {
+            margin-bottom: 1.8rem;
+            position: relative;
+            z-index: 2;
+        }
+        .hero-left h1 span {
+            display: inline-block;
+            background: var(--rojillo);
+            color: var(--white);
+            padding: 0.1em 0.4em;
+            border: var(--border-thick) solid var(--black);
+            box-shadow: var(--shadow-hard);
+            transform: rotate(-2deg);
+            margin-top: 0.2rem;
+        }
+        .hero-left p {
+            font-size: 1.3rem;
+            font-weight: 500;
+            border-left: 8px solid var(--cyan);
+            padding-left: 1.2rem;
+            margin-bottom: 2.2rem;
+        }
+        .hero-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+        }
+        .hero-badge {
+            background: var(--black);
+            color: var(--white);
+            font-weight: 700;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            padding: 0.5rem 1.2rem;
+            border: 4px solid var(--cyan);
+            box-shadow: 6px 6px 0 var(--cyan);
+            letter-spacing: 0.04em;
+            transform: rotate(-1deg);
+        }
+        .hero-right {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.2rem;
+        }
+        .hero-card {
+            background: var(--black);
+            color: var(--white);
+            padding: 1.6rem 1.2rem;
+            border: var(--border-thick) solid var(--white);
+            box-shadow: var(--shadow-hard);
+            transition: 0.2s ease;
+        }
+        .hero-card:nth-child(2) {
+            background: var(--rojillo);
+            border-color: var(--black);
+        }
+        .hero-card:nth-child(3) {
+            background: var(--electric-blue);
+            border-color: var(--cyan);
+        }
+        .hero-card:nth-child(4) {
+            background: var(--lime);
+            color: var(--black);
+            border-color: var(--black);
+        }
+        .hero-card .number {
+            font-size: 3.6rem;
+            font-weight: 900;
+            line-height: 1;
+            letter-spacing: -0.04em;
+        }
+        .hero-card .label {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            border-bottom: 3px solid currentColor;
+            display: inline-block;
+            margin: 0.4rem 0 0.6rem;
+        }
+        .hero-card .desc {
+            font-size: 0.85rem;
+            opacity: 0.85;
+        }
+        /* decorative lines */
+        #hero::before {
+            content: '';
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 200px;
+            height: 200px;
+            border: 8px solid var(--rojillo);
+            border-radius: 0;
+            opacity: 0.25;
+            z-index: 0;
+            pointer-events: none;
+        }
+        #hero::after {
+            content: '⚡⚡⚡';
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            font-size: 4rem;
+            color: var(--cyan);
+            opacity: 0.15;
+            letter-spacing: -0.2em;
+            z-index: 0;
+        }
+        /* ===== STATS STRIP ===== */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0.8rem;
+            padding: 2.5rem 0;
+        }
+        .stat-item {
+            background: var(--black);
+            color: var(--white);
+            padding: 2rem 1rem;
+            text-align: center;
+            border: var(--border-thick) solid var(--white);
+            box-shadow: var(--shadow-soft);
+            transition: 0.2s;
+        }
+        .stat-item:hover {
+            transform: translate(-4px, -4px);
+            box-shadow: 14px 14px 0 var(--cyan);
+        }
+        .stat-number {
+            font-size: 4.2rem;
+            font-weight: 900;
+            letter-spacing: -0.04em;
+            line-height: 1;
+            color: var(--lime);
+        }
+        .stat-label {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            margin-top: 0.4rem;
+            border-top: 3px solid var(--white);
+            display: inline-block;
+            padding-top: 0.3rem;
+        }
+        /* ===== HISTORY ===== */
+        #history {
+            background: var(--white);
+            border-top: var(--border-thick) solid var(--black);
+            border-bottom: var(--border-thick) solid var(--black);
+            padding: var(--section-pad);
+        }
+        .history-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 2.5rem;
+            align-items: start;
+        }
+        .history-text h2 {
+            border-left-color: var(--electric-blue);
+        }
+        .history-visual {
+            background: var(--black);
+            padding: 2rem 1.8rem;
+            border: var(--border-thick) solid var(--cyan);
+            box-shadow: var(--shadow-hard);
+        }
+        .history-year {
+            font-size: 3.2rem;
+            font-weight: 900;
+            color: var(--lime);
+            letter-spacing: -0.04em;
+            border-bottom: 4px solid var(--rojillo);
+            display: inline-block;
+            margin-top: 1.2rem;
+        }
+        .history-milestone {
+            color: var(--white);
+            font-weight: 500;
+            font-size: 1.1rem;
+            padding: 0.3rem 0 1.2rem 0;
+            border-bottom: 2px dashed var(--gray-hard);
+        }
+        .history-milestone:last-child {
+            border-bottom: none;
+        }
+        /* ===== STADIUM (bento-asymmetric) ===== */
+        #stadium {
+            background: var(--black);
+            color: var(--white);
+            padding: var(--section-pad);
+            border-bottom: var(--border-thick) solid var(--rojillo);
+        }
+        #stadium h2 {
+            border-left-color: var(--lime);
+            color: var(--white);
+        }
+        .stadium-layout {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr 1fr;
+            gap: 1.5rem;
+        }
+        .stadium-card {
+            background: var(--white);
+            color: var(--black);
+            padding: 2rem 1.5rem;
+            border: var(--border-thick) solid var(--rojillo);
+            box-shadow: var(--shadow-hard);
+            transition: 0.2s;
+        }
+        .stadium-card:nth-child(2) {
+            background: var(--cyan);
+            border-color: var(--black);
+            color: var(--black);
+        }
+        .stadium-card:nth-child(3) {
+            background: var(--electric-blue);
+            border-color: var(--white);
+            color: var(--white);
+        }
+        .stadium-card .icon {
+            font-size: 3rem;
+            font-weight: 900;
+            color: var(--rojillo);
+            opacity: 0.5;
+            line-height: 1;
+        }
+        .stadium-card h3 {
+            font-size: 1.8rem;
+            margin: 0.5rem 0 0.8rem;
+        }
+        .highlight {
+            background: var(--black);
+            color: var(--lime);
+            font-weight: 800;
+            font-size: 1.6rem;
+            display: inline-block;
+            padding: 0.2rem 1rem;
+            border: 4px solid var(--cyan);
+            margin-top: 0.8rem;
+        }
+        /* ===== PLAYERS ===== */
+        #players {
+            background: var(--white);
+            padding: var(--section-pad);
+            border-bottom: var(--border-thick) solid var(--black);
+        }
+        .players-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+        .player-card {
+            background: var(--black);
+            color: var(--white);
+            padding: 1.8rem 1.2rem;
+            border: var(--border-thick) solid var(--cyan);
+            box-shadow: var(--shadow-soft);
+            transition: 0.15s;
+            position: relative;
+        }
+        .player-card:hover {
+            transform: scale(1.02) rotate(-1deg);
+            border-color: var(--lime);
+            box-shadow: 12px 12px 0 var(--rojillo);
+        }
+        .player-number {
+            font-size: 3.8rem;
+            font-weight: 900;
+            color: var(--rojillo);
+            line-height: 1;
+            letter-spacing: -0.06em;
+        }
+        .player-name {
+            font-size: 1.6rem;
+            font-weight: 700;
+            border-bottom: 4px solid var(--cyan);
+            display: inline-block;
+            margin: 0.2rem 0 0.4rem;
+        }
+        .player-position {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: var(--lime);
+            font-weight: 600;
+        }
+        .player-desc {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            margin-top: 0.6rem;
+        }
+        /* ===== ACHIEVEMENTS (timeline rail) ===== */
+        #achievements {
+            background: var(--black);
+            color: var(--white);
+            padding: var(--section-pad);
+            border-bottom: var(--border-thick) solid var(--cyan);
+        }
+        #achievements h2 {
+            border-left-color: var(--rojillo);
+            color: var(--white);
+        }
+        .achievements-timeline {
+            display: grid;
+            gap: 1.8rem;
+            border-left: 8px solid var(--rojillo);
+            padding-left: 2rem;
+        }
+        .achievement-item {
+            display: grid;
+            grid-template-columns: 100px 1fr;
+            gap: 1.5rem;
+            align-items: baseline;
+            background: rgba(255,255,255,0.04);
+            padding: 1rem 1.5rem 1rem 1rem;
+            border: 3px solid var(--gray-hard);
+            transition: 0.2s;
+        }
+        .achievement-item:hover {
+            border-color: var(--lime);
+            background: rgba(0,229,255,0.08);
+        }
+        .achievement-year {
+            font-size: 2.4rem;
+            font-weight: 900;
+            color: var(--lime);
+            letter-spacing: -0.04em;
+        }
+        .achievement-detail h4 {
+            font-size: 1.5rem;
+            color: var(--white);
+        }
+        .achievement-detail p {
+            color: #ccc;
+            font-size: 0.95rem;
+        }
+        /* ===== FANS ===== */
+        #fans {
+            background: var(--white);
+            padding: var(--section-pad);
+            border-bottom: var(--border-thick) solid var(--black);
+        }
+        .fans-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 2.5rem;
+        }
+        .fans-left h2 {
+            border-left-color: var(--rojillo);
+        }
+        .fans-stats {
+            display: flex;
+            gap: 1.2rem;
+            flex-wrap: wrap;
+            margin-top: 1.8rem;
+        }
+        .fans-stat {
+            background: var(--black);
+            color: var(--white);
+            padding: 0.8rem 1.6rem;
+            border: 5px solid var(--cyan);
+            box-shadow: var(--shadow-soft);
+        }
+        .fans-stat .num {
+            font-size: 2.2rem;
+            font-weight: 900;
+            color: var(--lime);
+        }
+        .fans-stat .lbl {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+        .fans-right blockquote {
+            font-size: 1.6rem;
+            font-weight: 600;
+            line-height: 1.3;
+            border-left: 10px solid var(--rojillo);
+            padding-left: 1.5rem;
+            margin: 1.5rem 0 0.5rem;
+            quotes: "“" "”";
+        }
+        .fans-right cite {
+            font-weight: 700;
+            font-style: normal;
+            color: var(--electric-blue);
+        }
+        /* ===== CONTACT ===== */
+        #contact {
+            background: var(--black);
+            color: var(--white);
+            padding: var(--section-pad);
+            border-bottom: var(--border-thick) solid var(--lime);
+        }
+        #contact h2 {
+            border-left-color: var(--cyan);
+            color: var(--white);
+        }
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2.5rem;
+        }
+        .contact-item {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 1.2rem;
+            border-left: 6px solid var(--rojillo);
+            padding-left: 1rem;
+        }
+        .tag {
+            font-weight: 700;
+            color: var(--cyan);
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            letter-spacing: 0.06em;
+        }
+        .contact-form {
+            background: var(--white);
+            color: var(--black);
+            padding: 2rem 1.8rem;
+            border: var(--border-thick) solid var(--cyan);
+            box-shadow: var(--shadow-hard);
+        }
+        .contact-form h3 {
+            margin-bottom: 1.2rem;
+            border-bottom: 6px solid var(--rojillo);
+            display: inline-block;
+        }
+        .form-group {
+            margin-bottom: 1.2rem;
+        }
+        .form-group label {
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            letter-spacing: 0.06em;
+            display: block;
+            margin-bottom: 0.2rem;
+        }
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 0.8rem 0.6rem;
+            border: 4px solid var(--black);
+            font-family: inherit;
+            font-size: 1rem;
+            background: #f0ede8;
+        }
+        .btn-submit {
+            background: var(--rojillo);
+            color: var(--white);
+            font-weight: 800;
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            padding: 0.8rem 2.2rem;
+            border: var(--border-thick) solid var(--black);
+            box-shadow: 8px 8px 0 var(--black);
+            cursor: pointer;
+            transition: 0.15s;
+            letter-spacing: 0.04em;
+        }
+        .btn-submit:hover {
+            background: var(--electric-blue);
+            transform: translate(-3px, -3px);
+            box-shadow: 12px 12px 0 var(--black);
+        }
+        /* ===== FOOTER ===== */
+        footer {
+            background: var(--black);
+            color: var(--white);
+            padding: 3rem 1.5rem 1.5rem;
+            border-top: var(--border-thick) solid var(--rojillo);
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1.8fr 1fr 1fr 1fr;
+            gap: 2rem;
+            margin-bottom: 2.5rem;
+        }
+        .footer-brand .logo {
+            font-size: 2.2rem;
+            font-weight: 800;
+            letter-spacing: -0.04em;
+            margin-bottom: 0.5rem;
+        }
+        .footer-brand .logo span {
+            color: var(--lime);
+        }
+        .footer-col h4 {
+            font-size: 1.2rem;
+            margin-bottom: 0.8rem;
+            border-left: 6px solid var(--cyan);
+            padding-left: 0.6rem;
+        }
+        .footer-col a {
+            display: block;
+            color: #bbb;
+            font-weight: 400;
+            margin-bottom: 0.4rem;
+            transition: 0.1s;
+        }
+        .footer-col a:hover {
+            color: var(--lime);
+            padding-left: 4px;
+        }
+        .footer-bottom {
+            border-top: 4px solid var(--gray-hard);
+            padding-top: 1.2rem;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            font-size: 0.85rem;
+            color: #aaa;
+        }
+        /* ===== KEYFRAME ANIMATION ===== */
+        @keyframes pulse-sticker {
+            0% { transform: rotate(-2deg) scale(1); }
+            50% { transform: rotate(2deg) scale(1.04); }
+            100% { transform: rotate(-2deg) scale(1); }
+        }
+        .hero-badge:nth-child(2) {
+            animation: pulse-sticker 2.8s ease-in-out infinite;
+        }
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 1024px) {
+            .hero-grid {
+                grid-template-columns: 1fr;
+            }
+            .hero-right {
+                grid-template-columns: 1fr 1fr;
+            }
+            .history-grid {
+                grid-template-columns: 1fr;
+            }
+            .stadium-layout {
+                grid-template-columns: 1fr 1fr;
+            }
+            .players-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            .fans-grid {
+                grid-template-columns: 1fr;
+            }
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+        @media (max-width: 768px) {
+            .stats-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            .hero-right {
+                grid-template-columns: 1fr;
+            }
+            .stadium-layout {
+                grid-template-columns: 1fr;
+            }
+            .players-grid {
+                grid-template-columns: 1fr;
+            }
+            .achievement-item {
+                grid-template-columns: 1fr;
+            }
+            .nav-links {
+                font-size: 0.75rem;
+                gap: 0.4rem 0.8rem;
+            }
+            .nav-logo {
+                font-size: 1.4rem;
+            }
+            h1 {
+                font-size: clamp(2.8rem, 14vw, 5rem);
+            }
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        @media (max-width: 480px) {
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+            .hero-badges {
+                flex-direction: column;
+            }
+            .hero-badge {
+                width: fit-content;
+            }
+        }
+        /* ===== extra decorative ===== */
+        .deco-svg {
+            display: none;
+        }
+        /* ensure no opacity hidden content */
+        section, header, footer, .hero-card, .stat-item, .player-card, .achievement-item, .fans-stat, .contact-form {
+            opacity: 1 !important;
+            visibility: visible !important;
+        }
+    </style>
+<style id="lw-ai-premium-theme">
+:root{
+  --lw-theme-name:"Editorial premium";
+  --lw-bg:#f6f9ff;--lw-paper:#ffffff;--lw-ink:#07111f;--lw-muted:#475569;--lw-line:#d7e2f0;
+  --lw-accent:#155eef;--lw-accent-2:#06b6d4;--lw-accent-3:#f59e0b;--lw-dark:#08111f;--lw-soft:#eaf4ff;
+  --lw-radius:28px;--lw-radius-sm:18px;--lw-shadow:0 24px 70px rgba(7,17,31,.13);--lw-shadow-soft:0 12px 34px rgba(7,17,31,.08);
+}
+*,*::before,*::after{box-sizing:border-box}
+html,body{margin:0;padding:0;width:100%;max-width:100%;overflow-x:hidden;scroll-behavior:smooth}
+body{
+  color:var(--lw-ink)!important;
+  background:
+    radial-gradient(circle at 8% 4%, color-mix(in srgb,var(--lw-accent) 18%,transparent), transparent 34rem),
+    radial-gradient(circle at 92% 12%, color-mix(in srgb,var(--lw-accent-2) 20%,transparent), transparent 32rem),
+    linear-gradient(180deg,#fff 0%,var(--lw-bg) 44%,#fff 100%)!important;
+  font-family: ui-sans-serif, Inter, Manrope, "Segoe UI", system-ui, -apple-system, sans-serif!important;
+  line-height:1.65!important;
+}
+body::selection{background:color-mix(in srgb,var(--lw-accent) 22%,#fff);color:var(--lw-ink)}
+body>*,main,header,nav,section,footer{width:100%;max-width:100%}
+img,svg,video,canvas,iframe{max-width:100%;height:auto}
+a{color:inherit;text-decoration:none}
+nav,[data-lw-section="navbar"]{
+  position:sticky!important;top:0;z-index:20;
+  background:rgba(255,255,255,.82)!important;
+  border-bottom:1px solid color-mix(in srgb,var(--lw-line) 84%,transparent)!important;
+  backdrop-filter:blur(18px) saturate(150%);
+  box-shadow:0 10px 26px rgba(7,17,31,.04);
+}
+nav>*,[data-lw-section="navbar"]>*{width:min(1180px,calc(100% - 40px));margin-inline:auto;min-height:76px;display:flex;align-items:center;justify-content:space-between;gap:22px}
+nav ul,[data-lw-section="navbar"] ul{list-style:none;display:flex;align-items:center;gap:20px;flex-wrap:wrap;margin:0;padding:0}
+nav a,[data-lw-section="navbar"] a{font-weight:800;color:color-mix(in srgb,var(--lw-ink) 86%,#fff);letter-spacing:-.01em}
+nav a:hover,[data-lw-section="navbar"] a:hover{color:var(--lw-accent)}
+main,body>main{isolation:isolate}
+header,section,[data-lw-section]{
+  position:relative;
+  padding:clamp(76px,9vw,126px) 0;
+  overflow:hidden;
+}
+header>*:not(style),section>*:not(style),footer>*:not(style),main>*:not(style){
+  width:min(1180px,calc(100% - 40px));
+  margin-inline:auto;
+}
+header:first-of-type,[data-lw-section="hero"],.hero,#hero{
+  min-height:min(760px,88vh);
+  display:grid;
+  align-items:center;
+  color:#fff!important;
+  background:
+    linear-gradient(135deg,color-mix(in srgb,var(--lw-dark) 96%,#000),color-mix(in srgb,var(--lw-accent) 34%,var(--lw-dark)) 56%,color-mix(in srgb,var(--lw-accent-2) 55%,var(--lw-dark)))!important;
+}
+header:first-of-type::before,[data-lw-section="hero"]::before,.hero::before,#hero::before{
+  content:"";position:absolute;inset:-22% -12% auto auto;width:min(58vw,680px);aspect-ratio:1;border-radius:999px;
+  background:radial-gradient(circle,color-mix(in srgb,var(--lw-accent-2) 52%,transparent),transparent 68%);
+  filter:blur(8px);opacity:.82;pointer-events:none;
+}
+header:first-of-type::after,[data-lw-section="hero"]::after,.hero::after,#hero::after{
+  content:"";position:absolute;left:-12%;bottom:-18%;width:min(54vw,640px);aspect-ratio:1.2;border-radius:42%;
+  background:radial-gradient(circle,color-mix(in srgb,var(--lw-accent-3) 34%,transparent),transparent 66%);
+  filter:blur(4px);opacity:.75;pointer-events:none;
+}
+header:first-of-type>*:not(style),[data-lw-section="hero"]>*:not(style),.hero>*:not(style),#hero>*:not(style){position:relative;z-index:1}
+h1,h2,h3,h4{letter-spacing:-.055em;line-height:1.02;color:inherit}
+h1{
+  max-width:1050px;
+  margin:0 0 24px!important;
+  font-size:clamp(3rem,8.8vw,7.4rem)!important;
+  font-weight:950!important;
+  text-wrap:balance;
+}
+[data-lw-section="hero"] h1,header:first-of-type h1,.hero h1,#hero h1{
+  color:#fff!important;
+  text-shadow:0 22px 70px rgba(0,0,0,.28);
+}
+h2{
+  font-size:clamp(2.15rem,5.2vw,5.25rem)!important;
+  font-weight:950!important;
+  margin:0 0 26px!important;
+  text-wrap:balance;
+}
+h2::after{
+  content:"";display:block;width:86px;height:5px;margin-top:18px;border-radius:99px;
+  background:linear-gradient(90deg,var(--lw-accent),var(--lw-accent-2),var(--lw-accent-3));
+}
+h3{font-size:clamp(1.22rem,2.2vw,2rem)!important;font-weight:920!important;margin:0 0 12px!important}
+p{font-size:clamp(1.02rem,1.15vw,1.18rem);color:color-mix(in srgb,var(--lw-muted) 88%,var(--lw-ink));margin-top:0}
+[data-lw-section="hero"] p,header:first-of-type p,.hero p,#hero p{color:rgba(255,255,255,.84)!important;max-width:760px;font-size:clamp(1.14rem,1.65vw,1.45rem)}
+header:first-of-type p:first-of-type,[data-lw-section="hero"] p:first-of-type{font-weight:520}
+section:nth-of-type(even){background:rgba(255,255,255,.7)}
+section:nth-of-type(odd):not([data-lw-section="hero"]){background:linear-gradient(180deg,transparent,color-mix(in srgb,var(--lw-soft) 42%,transparent),transparent)}
+article,.card,[class*="card"],[class*="feature"],[class*="service"],[class*="price"],[class*="testimonial"],[class*="quote"],[class*="item"],[class*="box"],[class*="panel"],details{
+  position:relative;
+  border:1px solid color-mix(in srgb,var(--lw-line) 86%,#fff)!important;
+  border-radius:var(--lw-radius)!important;
+  background:linear-gradient(180deg,rgba(255,255,255,.96),rgba(255,255,255,.78))!important;
+  box-shadow:var(--lw-shadow-soft)!important;
+  padding:clamp(22px,3vw,38px)!important;
+  overflow:hidden;
+  transition:transform .28s ease,box-shadow .28s ease,border-color .28s ease;
+}
+article::before,.card::before,[class*="card"]::before,[class*="feature"]::before,[class*="service"]::before,[class*="panel"]::before{
+  content:"";position:absolute;inset:0 0 auto 0;height:5px;background:linear-gradient(90deg,var(--lw-accent),var(--lw-accent-2),var(--lw-accent-3));opacity:.9;
+}
+article:hover,.card:hover,[class*="card"]:hover,[class*="feature"]:hover,[class*="service"]:hover,[class*="price"]:hover,[class*="testimonial"]:hover,[class*="quote"]:hover,[class*="item"]:hover,[class*="box"]:hover,[class*="panel"]:hover{
+  transform:translateY(-6px);
+  box-shadow:var(--lw-shadow)!important;
+  border-color:color-mix(in srgb,var(--lw-accent) 34%,var(--lw-line))!important;
+}
+.grid,.grid-2,.grid-3,.cards,.features,.services,.pricing,.testimonials,.testis,[class*="grid"],[class*="cards"],[class*="features"],[class*="services"]{
+  display:grid!important;
+  gap:clamp(18px,2vw,30px)!important;
+}
+.grid-2{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+.grid-3,.cards,.features,.services,.pricing,.testimonials,.testis{grid-template-columns:repeat(3,minmax(0,1fr))!important}
+section ul{display:grid;gap:12px;margin:18px 0;padding:0;list-style:none}
+section li{
+  position:relative;
+  padding:12px 14px 12px 42px;
+  border-radius:16px;
+  background:rgba(255,255,255,.68);
+  border:1px solid color-mix(in srgb,var(--lw-line) 70%,transparent);
+  color:color-mix(in srgb,var(--lw-muted) 86%,var(--lw-ink));
+}
+section li::before{
+  content:"";position:absolute;left:15px;top:1.05em;width:11px;height:11px;border-radius:999px;
+  background:linear-gradient(135deg,var(--lw-accent),var(--lw-accent-2));
+  box-shadow:0 0 0 5px color-mix(in srgb,var(--lw-accent) 12%,transparent);
+}
+main a:not(nav a),header a:not(nav a),section a:not(nav a),button,input[type="submit"],.btn,[class*="btn"],[class*="cta"]{
+  display:inline-flex;align-items:center;justify-content:center;gap:10px;
+  min-height:48px;padding:14px 22px!important;
+  border-radius:999px!important;border:1px solid color-mix(in srgb,var(--lw-accent) 50%,transparent)!important;
+  background:linear-gradient(135deg,var(--lw-accent),var(--lw-accent-2))!important;
+  color:#fff!important;font-weight:920!important;letter-spacing:-.015em;
+  box-shadow:0 18px 38px color-mix(in srgb,var(--lw-accent) 28%,transparent)!important;
+  transition:transform .25s ease,box-shadow .25s ease,filter .25s ease;
+}
+main a:not(nav a):hover,header a:not(nav a):hover,section a:not(nav a):hover,button:hover,.btn:hover,[class*="btn"]:hover,[class*="cta"]:hover{
+  transform:translateY(-3px) scale(1.02);
+  filter:saturate(1.08);
+  box-shadow:0 25px 58px color-mix(in srgb,var(--lw-accent) 36%,transparent)!important;
+}
+form{display:grid;gap:14px}
+input,textarea,select{
+  width:100%;border:1px solid var(--lw-line)!important;border-radius:18px!important;
+  padding:15px 17px!important;background:rgba(255,255,255,.92)!important;color:var(--lw-ink)!important;font:inherit;
+  box-shadow:0 8px 20px rgba(7,17,31,.04);
+}
+textarea{min-height:130px;resize:vertical}
+footer,[data-lw-section="footer"]{
+  background:linear-gradient(135deg,var(--lw-dark),color-mix(in srgb,var(--lw-accent) 34%,var(--lw-dark)))!important;
+  color:#fff!important;
+  padding:64px 0!important;
+}
+footer p,footer a,[data-lw-section="footer"] p,[data-lw-section="footer"] a{color:rgba(255,255,255,.78)!important}
+@keyframes lwFadeUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
+header>*:not(style),section>*:not(style){animation:lwFadeUp .72s ease both}
+@media (min-width:920px){
+  header:first-of-type>*:not(style),[data-lw-section="hero"]>*:not(style),.hero>*:not(style),#hero>*:not(style){
+    display:grid;grid-template-columns:minmax(0,1.05fr) minmax(320px,.75fr);gap:48px;align-items:center;
+  }
+  header:first-of-type h1,[data-lw-section="hero"] h1,.hero h1,#hero h1,
+  header:first-of-type p,[data-lw-section="hero"] p,.hero p,#hero p{grid-column:1}
+}
+@media (max-width:920px){
+  nav>*,[data-lw-section="navbar"]>*{width:min(100% - 28px,1180px);align-items:flex-start;flex-direction:column;padding:12px 0}
+  nav ul,[data-lw-section="navbar"] ul{gap:11px}
+  header,section,[data-lw-section]{padding:64px 0}
+  header>*:not(style),section>*:not(style),footer>*:not(style),main>*:not(style){width:min(100% - 28px,1180px)}
+  header:first-of-type,[data-lw-section="hero"],.hero,#hero{min-height:640px}
+  .grid,.grid-2,.grid-3,.cards,.features,.services,.pricing,.testimonials,.testis,[class*="grid"],[class*="cards"],[class*="features"],[class*="services"]{grid-template-columns:1fr!important}
+  h1{font-size:clamp(2.55rem,13vw,4.35rem)!important}
+}
+
+body::before{content:"";position:fixed;inset:0;z-index:-3;pointer-events:none}
+main{background:transparent!important}
+section{isolation:isolate}
+section>*,header>*,footer>*{position:relative;z-index:1}
+[data-lw-section="hero"] .container,[data-lw-section="hero"] .wrap,.hero .container,.hero .wrap,header:first-of-type .container,header:first-of-type .wrap{width:min(1220px,calc(100% - 40px))!important}
+[data-lw-section="hero"] p,.hero p,header:first-of-type p{max-width:820px!important}
+section a:not(nav a),header a:not(nav a),.btn,[class*="btn"],[class*="cta"]{text-decoration:none!important}
+@media (max-width:760px){section>*,header>*,footer>*{width:min(100% - 28px,1220px)!important}}
+
+:root{--lw-brutal-ink:#050505;--lw-brutal-paper:#fffdfa;--lw-brutal-accent:#00a6fb;--lw-brutal-hot:#fb5607}
+body{background:var(--lw-brutal-paper)!important;color:var(--lw-brutal-ink)!important;font-family:"Arial Black",Impact,ui-sans-serif,system-ui,sans-serif!important}
+body::before{background:linear-gradient(90deg,rgba(0,0,0,.055) 1px,transparent 1px),linear-gradient(rgba(0,0,0,.055) 1px,transparent 1px);background-size:34px 34px}
+nav,[data-lw-section="navbar"]{position:sticky!important;background:#fff!important;border-bottom:4px solid #000!important;box-shadow:0 8px 0 #000!important;backdrop-filter:none!important}
+nav>*,[data-lw-section="navbar"]>*{min-height:86px!important}
+nav a,[data-lw-section="navbar"] a{font-weight:950!important;text-transform:uppercase!important;letter-spacing:.02em!important;color:#000!important}
+header:first-of-type,[data-lw-section="hero"],.hero,#hero{min-height:760px!important;color:#000!important;background:linear-gradient(135deg,var(--lw-brutal-accent) 0 36%,#fff 36% 66%,#000 66% 100%)!important}
+header:first-of-type::before,[data-lw-section="hero"]::before,.hero::before,#hero::before{inset:12% 5% auto auto!important;width:min(34vw,420px)!important;border-radius:0!important;background:#fff!important;border:5px solid #000!important;box-shadow:16px 16px 0 #000!important;filter:none!important;opacity:1!important;transform:rotate(-4deg)}
+header:first-of-type::after,[data-lw-section="hero"]::after,.hero::after,#hero::after{left:8%!important;bottom:8%!important;width:180px!important;aspect-ratio:1!important;border-radius:0!important;background:var(--lw-brutal-hot)!important;border:5px solid #000!important;box-shadow:12px 12px 0 #000!important;filter:none!important;opacity:1!important;transform:rotate(8deg)}
+h1{font-size:clamp(3.1rem,9vw,8.4rem)!important;line-height:.86!important;letter-spacing:-.085em!important;text-transform:uppercase!important;color:#000!important;text-shadow:none!important;max-width:980px!important}
+h2{font-size:clamp(2.4rem,6vw,6rem)!important;text-transform:uppercase!important;letter-spacing:-.075em!important;color:#000!important}
+h2::after{width:180px!important;height:12px!important;border-radius:0!important;background:#000!important}
+p{color:#111!important;font-weight:650!important}
+[data-lw-section="hero"] p,.hero p,header:first-of-type p{color:#000!important;background:#fff!important;border:4px solid #000!important;box-shadow:10px 10px 0 #000!important;padding:18px!important;max-width:760px!important}
+article,.card,[class*="card"],[class*="feature"],[class*="service"],[class*="panel"],details{border:4px solid #000!important;border-radius:0!important;background:#fff!important;box-shadow:12px 12px 0 #000!important}
+article::before,.card::before,[class*="card"]::before,[class*="feature"]::before,[class*="service"]::before,[class*="panel"]::before{height:0!important}
+article:hover,.card:hover,[class*="card"]:hover,[class*="feature"]:hover,[class*="service"]:hover,[class*="panel"]:hover{transform:translate(-4px,-4px)!important;box-shadow:18px 18px 0 #000!important}
+main a:not(nav a),header a:not(nav a),section a:not(nav a),button,.btn,[class*="btn"],[class*="cta"]{background:#000!important;color:#fff!important;border:4px solid #000!important;border-radius:0!important;box-shadow:8px 8px 0 var(--lw-brutal-accent)!important;text-transform:uppercase!important}
+section:nth-of-type(even),section:nth-of-type(odd):not([data-lw-section="hero"]){background:#f1f5f9!important}
+footer,[data-lw-section="footer"]{background:#000!important;border-top:5px solid var(--lw-brutal-accent)!important}
+@media (min-width:960px){.grid,.grid-2,.grid-3,.cards,.features,.services,.pricing,.testimonials,.testis{gap:28px!important}.grid-3,.cards,.features,.services{grid-template-columns:1.2fr .8fr 1fr!important}}
+
+</style>
+<style id="lw-ai-render-safety">
+html,body{width:100%;max-width:100%;min-height:100%;margin:0;overflow-x:hidden}
+body{opacity:1!important;visibility:visible!important}
+main,nav,header,section,footer,[data-lw-section]{width:100%;max-width:100%;position:relative}
+[data-lw-section="hero"],header.hero,.hero,#hero{overflow:hidden}
+[data-lw-section="hero"]>*:not(style),header.hero>*:not(style),.hero>*:not(style),#hero>*:not(style){position:relative;z-index:2}
+nav,header,section,main,footer,h1,h2,h3,h4,p,a,button,article,aside,form,.container,.wrap,[class*="hero"],[class*="content"],[class*="panel"],[class*="card"],[class*="grid"],[class*="text"]{opacity:1!important;visibility:visible!important}
+[class*="animate"],[class*="fade"],[class*="reveal"],[class*="motion"],[data-aos],[style*="opacity:0"],[style*="opacity: 0"]{opacity:1!important;visibility:visible!important}
+@supports not ((background-clip:text) or (-webkit-background-clip:text)){
+  h1,h2,h3,[class*="title"],[class*="headline"]{-webkit-text-fill-color:currentColor!important;background:none!important}
+}
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important}
+}
+@media (max-width:900px){
+  [data-lw-section="hero"],header.hero,.hero,#hero{min-height:auto!important}
+  .container,.wrap,.lw-wrap{max-width:100%!important}
+}
+</style>
+<style id="lw-ai-import-frame-base">
+html,body{margin:0;padding:0;width:100%;max-width:100%;overflow-x:hidden}
+body{min-width:0}
+*,*::before,*::after{box-sizing:border-box}
+img,video,canvas,svg,iframe{max-width:100%;height:auto}
+nav,header,main,section,article,aside,footer,[data-lw-section]{width:100%;max-width:100%;position:relative}
+[style*="opacity:0"],[style*="opacity: 0"]{opacity:1!important;visibility:visible!important}
+.animate-fade-up,.fade-up,.reveal,.is-hidden,.aos-init,[class*="animate-"],[class*="fade-"],[class*="reveal"]{opacity:1!important;visibility:visible!important}
+[data-lw-section="hero"]>*:not(style),.hero>*:not(style),#hero>*:not(style),header>*:not(style),main>*:not(style){position:relative}
+</style><style id="lw-imported-frame-base">
+html,body{margin:0;padding:0;width:100%;max-width:100%;overflow-x:hidden}
+body{min-width:0}
+*,*::before,*::after{box-sizing:border-box}
+img,video,canvas,svg,iframe{max-width:100%;height:auto}
+nav,header,main,section,article,aside,footer,[data-lw-section]{width:100%;max-width:100%;position:relative}
+[style*="opacity:0"],[style*="opacity: 0"]{opacity:1!important;visibility:visible!important}
+.animate-fade-up,.fade-up,.reveal,.is-hidden,.aos-init,[class*="animate-"],[class*="fade-"],[class*="reveal"]{opacity:1!important;visibility:visible!important}
+[data-lw-section="hero"]>*:not(style),.hero>*:not(style),#hero>*:not(style),header>*:not(style),main>*:not(style){position:relative}
+.lw-import-editable{outline:1px solid transparent;outline-offset:4px;transition:outline-color .16s ease,box-shadow .16s ease}
+.lw-import-editable:hover{outline-color:rgba(37,99,235,.45);cursor:text}
+.lw-import-selected{outline:2px solid #2563eb!important;box-shadow:0 0 0 7px rgba(37,99,235,.14);border-radius:8px}
+.lw-import-selected[contenteditable="true"]{min-width:1em}
+</style><script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script></head>
+<body>
+    <!-- NAVBAR -->
+    <header data-lw-section="navbar">
+        <div class="nav-inner">
+            <div class="nav-logo"><span>CA</span> Osasuna</div>
+            <nav class="nav-links">
+                <a href="#hero">Inicio</a>
+                <a href="#history">Historia</a>
+                <a href="#stadium">Estadio</a>
+                <a href="#players">Plantilla</a>
+                <a href="#achievements">Logros</a>
+                <a href="#fans">Afición</a>
+                <a href="#contact">Contacto</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- HERO (poster magazine) -->
+    <section id="hero" data-lw-section="hero">
+        <div class="container hero-grid">
+            <div class="hero-left">
+                <h1>Fuerza<br><span>Rojilla</span></h1>
+                <p>Club Atlético Osasuna · fundado en 1920 · pasión de Navarra · corazón de El Sadar</p>
+                <div class="hero-badges">
+                    <div class="hero-badge">104 años de historia</div>
+                    <div class="hero-badge">La Liga EA Sports</div>
+                    <div class="hero-badge">El Sadar · 23.576</div>
+                </div>
+            </div>
+            <div class="hero-right">
+                <div class="hero-card"><div class="number">1920</div><div class="label">Fundación</div><div class="desc">Nacimiento del club en Pamplona, corazón de Navarra.</div></div>
+                <div class="hero-card"><div class="number">37</div><div class="label">Temp. en 1ª</div><div class="desc">Trayectoria consolidada en la máxima categoría.</div></div>
+                <div class="hero-card"><div class="number">23K</div><div class="label">Capacidad</div><div class="desc">Espectadores que vibran en El Sadar cada partido.</div></div>
+                <div class="hero-card"><div class="number">6</div><div class="label">Finales de Copa</div><div class="desc">El club ha disputado seis finales del torneo del KO.</div></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- STATS strip -->
+    <section data-lw-section="stats">
+        <div class="container stats-grid">
+            <div class="stat-item"><div class="stat-number">104</div><div class="stat-label">Años de Historia</div></div>
+            <div class="stat-item"><div class="stat-number">37</div><div class="stat-label">Temp. en Primera</div></div>
+            <div class="stat-item"><div class="stat-number">6</div><div class="stat-label">Finales de Copa</div></div>
+            <div class="stat-item"><div class="stat-number">23K</div><div class="stat-label">Aficionados</div></div>
+        </div>
+    </section>
+
+    <!-- HISTORY -->
+    <section id="history" data-lw-section="content">
+        <div class="container history-grid">
+            <div class="history-text">
+                <h2>Historia del Club</h2>
+                <p>El Club Atlético Osasuna fue fundado el 24 de octubre de 1920 en Pamplona, Navarra. Desde sus inicios, el club ha representado los valores de esfuerzo, humildad y unión de la tierra navarra. Su nombre, Osasuna, significa «salud» en euskera, reflejando la vitalidad de una institución que ha crecido con su gente.</p>
+                <p>A lo largo de más de un siglo, Osasuna ha vivido momentos gloriosos: ascensos históricos, finales de Copa del Rey, participaciones en competiciones europeas y una conexión única con su afición, la mejor del mundo según su hinchada.</p>
+            </div>
+            <div class="history-visual">
+                <div class="history-year">1920</div><div class="history-milestone">Fundación del Club Atlético Osasuna</div>
+                <div class="history-year">2005</div><div class="history-milestone">Subcampeón de Copa del Rey</div>
+                <div class="history-year">2023</div><div class="history-milestone">Subcampeón de Copa y clasificación a Europa</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- STADIUM (bento) -->
+    <section id="stadium" data-lw-section="features">
+        <div class="container">
+            <h2>Estadio El Sadar</h2>
+            <div class="stadium-layout">
+                <div class="stadium-card"><div class="icon">01</div><h3>Capacidad</h3><p>El Estadio El Sadar tiene una capacidad para 23.576 espectadores, todos ellos entregados a los colores rojillos.</p><div class="highlight">23.576 personas</div></div>
+                <div class="stadium-card"><div class="icon">02</div><h3>Inauguración</h3><p>Inaugurado el 2 de septiembre de 1967, ha sido testigo de innumerables gestas deportivas.</p><div class="highlight">1967</div></div>
+                <div class="stadium-card"><div class="icon">03</div><h3>Remodelación</h3><p>En 2020 se completó una ambiciosa remodelación que modernizó el estadio, manteniendo su esencia.</p><div class="highlight">2020</div></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PLAYERS -->
+    <section id="players" data-lw-section="services">
+        <div class="container">
+            <h2>Plantilla 2024-25</h2>
+            <div class="players-grid">
+                <div class="player-card"><div class="player-number">1</div><div class="player-name">Sergio Herrera</div><div class="player-position">Portero</div><div class="player-desc">Capitán y guardián de la portería rojilla. Experiencia y liderazgo.</div></div>
+                <div class="player-card"><div class="player-number">5</div><div class="player-name">David García</div><div class="player-position">Defensa Central</div><div class="player-desc">Solidez defensiva y salida de balón. Referente en la zaga.</div></div>
+                <div class="player-card"><div class="player-number">10</div><div class="player-name">Aimar Oroz</div><div class="player-position">Centrocampista</div><div class="player-desc">Talento de la cantera, visión de juego y calidad.</div></div>
+                <div class="player-card"><div class="player-number">17</div><div class="player-name">Ante Budimir</div><div class="player-position">Delantero</div><div class="player-desc">Gol y lucha constante. Referente ofensivo.</div></div>
+                <div class="player-card"><div class="player-number">14</div><div class="player-name">Rubén García</div><div class="player-position">Extremo</div><div class="player-desc">Desborde, centros y sacrificio. Un puñal por la banda.</div></div>
+                <div class="player-card"><div class="player-number">6</div><div class="player-name">Lucas Torró</div><div class="player-position">Medio Centro</div><div class="player-desc">Equilibrio, recuperación y criterio en la medular.</div></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ACHIEVEMENTS (timeline) -->
+    <section id="achievements" data-lw-section="process">
+        <div class="container">
+            <h2>Logros Históricos</h2>
+            <div class="achievements-timeline">
+                <div class="achievement-item"><div class="achievement-year">2005</div><div class="achievement-detail"><h4>Subcampeón de Copa del Rey</h4><p>Osasuna llega a la final de Copa del Rey, cayendo ante el Real Betis en el Vicente Calderón.</p></div></div>
+                <div class="achievement-item"><div class="achievement-year">2006</div><div class="achievement-detail"><h4>Clasificación a Champions</h4><p>El club logra la mejor clasificación de su historia, 4º en La Liga y plaza para la fase previa de la Champions.</p></div></div>
+                <div class="achievement-item"><div class="achievement-year">2023</div><div class="achievement-detail"><h4>Subcampeón de Copa y Europa</h4><p>Osasuna vuelve a una final de Copa tras 18 años y se clasifica para la Conference League.</p></div></div>
+                <div class="achievement-item"><div class="achievement-year">2024</div><div class="achievement-detail"><h4>Consolidación en Primera</h4><p>El club mantiene su estatus en La Liga EA Sports, demostrando solidez institucional y deportiva.</p></div></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FANS (testimonials / proof) -->
+    <section id="fans" data-lw-section="testimonials">
+        <div class="container fans-grid">
+            <div class="fans-left">
+                <h2>La Afición Rojilla</h2>
+                <p>La afición de Osasuna es reconocida como una de las más fieles y apasionadas de España. El Sadar es una caldera donde cada partido se vive con intensidad única.</p>
+                <div class="fans-stats">
+                    <div class="fans-stat"><div class="num">98%</div><div class="lbl">Ocupación media</div></div>
+                    <div class="fans-stat"><div class="num">15K</div><div class="lbl">Abonados</div></div>
+                    <div class="fans-stat"><div class="num">100+</div><div class="lbl">Peñas oficiales</div></div>
+                </div>
+            </div>
+            <div class="fans-right">
+                <blockquote>"Osasuna no es solo un club, es el sentimiento de toda una comunidad. Cada domingo, El Sadar se convierte en el corazón de Navarra."</blockquote>
+                <cite>— Afición Rojilla</cite>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT / CTA -->
+    <section id="contact" data-lw-section="contact">
+        <div class="container contact-grid">
+            <div class="contact-info">
+                <h2>Contacto</h2>
+                <p>Ponte en contacto con el Club Atlético Osasuna. Estamos a tu disposición para cualquier consulta, sugerencia o colaboración.</p>
+                <div class="contact-details">
+                    <div class="contact-item"><span class="tag">Dirección</span><span>Calle del Sadar s/n, 31006 Pamplona, Navarra</span></div>
+                    <div class="contact-item"><span class="tag">Teléfono</span><span>+34 948 15 10 00</span></div>
+                    <div class="contact-item"><span class="tag">Email</span><span>info@osasuna.es</span></div>
+                    <div class="contact-item"><span class="tag">Horario</span><span>Lunes a Viernes 9:00 – 18:00</span></div>
+                </div>
+            </div>
+            <div class="contact-form">
+                <h3>Escríbenos</h3>
+                <div class="form-group"><label for="name">Nombre</label><input type="text" id="name" placeholder="Tu nombre"></div>
+                <div class="form-group"><label for="email">Email</label><input type="email" id="email" placeholder="tu@email.com"></div>
+                <div class="form-group"><label for="message">Mensaje</label><textarea id="message" placeholder="Escribe tu mensaje aquí..."></textarea></div>
+                <button class="btn-submit">Enviar Mensaje</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer data-lw-section="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand"><div class="logo">CA <span>Osasuna</span></div><p>Club Atlético Osasuna, fundado en 1920. Orgullo de Navarra, corazón de El Sadar. Fuerza Rojilla siempre.</p></div>
+                <div class="footer-col"><h4>Club</h4><a href="#history">Historia</a><a href="#stadium">Estadio</a><a href="#players">Plantilla</a><a href="#achievements">Logros</a></div>
+                <div class="footer-col"><h4>Afición</h4><a href="#fans">Peñas</a><a href="#fans">Abonos</a><a href="#fans">Tienda</a><a href="#contact">Contacto</a></div>
+                <div class="footer-col"><h4>Legal</h4><a href="#">Aviso Legal</a><a href="#">Privacidad</a><a href="#">Cookies</a><a href="#">Política</a></div>
+            </div>
+            <div class="footer-bottom"><span>© 2025 Club Atlético Osas
